@@ -9,6 +9,7 @@ const AddProductScreen = ({ navigation }) => {
   const [quantidade, setQuantidade] = useState('');
   const [foto, setFoto] = useState(null);
   const [successModalVisible, setSuccessModalVisible] = useState(false);
+  const [errorModalVisible, setErrorModalVisible] = useState(false); // Modal para erro de preenchimento
 
   const pickImage = async () => {
     const cameraPermission = await ImagePicker.requestCameraPermissionsAsync();
@@ -37,7 +38,7 @@ const AddProductScreen = ({ navigation }) => {
 
   const handleSubmit = async () => {
     if (!nome || !descricao || !quantidade) {
-      alert('Por favor, preencha todos os campos!');
+      setErrorModalVisible(true); // Exibe modal de erro
       return;
     }
 
@@ -64,13 +65,17 @@ const AddProductScreen = ({ navigation }) => {
       setSuccessModalVisible(true);
     } catch (error) {
       console.error('Erro ao adicionar produto:', error);
-      alert('Erro ao cadastrar o produto. Tente novamente.');
+      setErrorModalVisible(true); // Exibe modal de erro caso falhe
     }
   };
 
   const closeSuccessModal = () => {
     setSuccessModalVisible(false);
     navigation.navigate('Home');
+  };
+
+  const closeErrorModal = () => {
+    setErrorModalVisible(false);
   };
 
   return (
@@ -118,6 +123,24 @@ const AddProductScreen = ({ navigation }) => {
             <Text style={styles.modalTitle}>Sucesso!</Text>
             <Text style={styles.modalMessage}>Produto cadastrado com sucesso!</Text>
             <TouchableOpacity style={styles.modalButton} onPress={closeSuccessModal}>
+              <Text style={styles.modalButtonText}>OK</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+
+      {/* Modal para exibir alerta de erro (campo vazio) */}
+      <Modal
+        visible={errorModalVisible}
+        transparent={true}
+        animationType="fade"
+        onRequestClose={closeErrorModal}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContainer}>
+            <Text style={styles.errorTitle}>Erro!</Text>
+            <Text style={styles.modalMessage}>Por favor, preencha todos os campos!</Text>
+            <TouchableOpacity style={styles.errorButton} onPress={closeErrorModal}>
               <Text style={styles.modalButtonText}>OK</Text>
             </TouchableOpacity>
           </View>
@@ -197,6 +220,12 @@ const styles = StyleSheet.create({
     color: '#00cc66',
     marginBottom: 10,
   },
+  errorTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#ff3333', // Cor para título de erro
+    marginBottom: 10,
+  },
   modalMessage: {
     fontSize: 16,
     color: '#ffffff',
@@ -205,6 +234,12 @@ const styles = StyleSheet.create({
   },
   modalButton: {
     backgroundColor: '#6666ff',
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+  },
+  errorButton: {
+    backgroundColor: '#ff3333', // Botão de erro em vermelho
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 20,

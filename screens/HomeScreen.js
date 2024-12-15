@@ -89,7 +89,7 @@ const HomeScreen = ({ navigation }) => {
           keyExtractor={(item) => item.id.toString()}
           renderItem={renderItem}
           contentContainerStyle={styles.listContainer}
-          ListEmptyComponent={<Text style={styles.emptyText}>Nenhum produto encontrado.</Text>}
+          ListEmptyComponent={<Text style={styles.emptyText}>Nenhum produto encontrado</Text>}
         />
       )}
 

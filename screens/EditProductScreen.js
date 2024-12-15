@@ -68,7 +68,7 @@ const EditProductScreen = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Editar Produto</Text>
+      <Text style={styles.title}>Editar</Text>
       <TextInput
         placeholder="Nome do Produto"
         placeholderTextColor="#aaa"
