@@ -104,7 +104,7 @@ const HomeScreen = ({ navigation }) => {
           <View style={styles.modalContainer}>
             <Text style={styles.modalTitle}>Excluir Produto</Text>
             <Text style={styles.modalMessage}>
-              Tem certeza que deseja excluir o produto{' '}
+              Tem certeza que deseja excluir o produto?{' '}
               <Text style={{ fontWeight: 'bold' }}>{selectedProduct?.nome}</Text>?
             </Text>
             <View style={styles.modalActions}>

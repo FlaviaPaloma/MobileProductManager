@@ -139,7 +139,7 @@ const AddProductScreen = ({ navigation }) => {
         <View style={styles.modalOverlay}>
           <View style={styles.modalContainer}>
             <Text style={styles.errorTitle}>Erro!</Text>
-            <Text style={styles.modalMessage}>Por favor, preencha todos os campos!</Text>
+            <Text style={styles.modalMessage}>Por favor, preencha todos os campos</Text>
             <TouchableOpacity style={styles.errorButton} onPress={closeErrorModal}>
               <Text style={styles.modalButtonText}>OK</Text>
             </TouchableOpacity>
