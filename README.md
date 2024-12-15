@@ -111,17 +111,6 @@ O servidor estará rodando em: `http://localhost:3000`
     - `foto`: file (imagem, opcional)
 - **DELETE /produtos/:id**: Exclui um produto.
 
-## Capturas de Tela
-
-### Tela Inicial (Listagem de Produtos)
-![Home Screen](https://via.placeholder.com/400x800?text=Listagem+de+Produtos)
-
-### Adicionar Produto
-![Add Product Screen](https://via.placeholder.com/400x800?text=Adicionar+Produto)
-
-### Editar Produto
-![Edit Product Screen](https://via.placeholder.com/400x800?text=Editar+Produto)
-
 ## Melhorias Futuras
 
 - Implementar paginação na listagem de produtos.
